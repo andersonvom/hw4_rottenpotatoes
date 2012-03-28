@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
   def similar
     id = params[:id]
     @movie = Movie.find(id)
+    redirect_to root_url unless @movie.director
     @movies = Movie.find_all_by_director @movie.director
   end
 
