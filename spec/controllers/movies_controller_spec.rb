@@ -11,13 +11,13 @@ describe MoviesController do
     end
 
     it "GET 'similar'" do
-      Movie.stub(:find_by_director)
+      Movie.stub(:find_all_by_director)
       get :similar, :id => @movie.id
       response.should render_template('similar')
     end
     
     it "should find all movies from the director of given movie" do
-      Movie.should_receive(:find_by_director).with('George Lucas').
+      Movie.should_receive(:find_all_by_director).with('George Lucas').
         and_return(@fake_results)
       get :similar, :id => @movie.id
       assigns(:movies).should == @fake_results
