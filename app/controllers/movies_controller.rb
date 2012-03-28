@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(id)
     if @movie.director.blank?
       flash[:warning] = "'#{@movie.title}' has no director info"
-      redirect_to root_url
+      redirect_to root_url and return
     end
     @movies = Movie.find_all_by_director @movie.director
   end
