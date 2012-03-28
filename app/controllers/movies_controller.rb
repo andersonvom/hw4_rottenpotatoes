@@ -9,7 +9,7 @@ class MoviesController < ApplicationController
   def similar
     id = params[:id]
     @movie = Movie.find(id)
-    @movies = Movie.find_by_director @movie.director
+    @movies = Movie.find_all_by_director @movie.director
   end
 
   def index
