@@ -4,6 +4,9 @@
 
 %ul#details
   %li
+    Director:
+    = link_to @movie.director, similar_movie_path(@movie), :title => 'Find Movies With Same Director'
+  %li
     Rating:
     = @movie.rating
   %li
