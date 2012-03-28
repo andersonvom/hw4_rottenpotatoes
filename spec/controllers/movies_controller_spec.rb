@@ -22,6 +22,13 @@ describe MoviesController do
       get :similar, :id => @movie.id
       assigns(:movies).should == @fake_results
     end
+    
+    it "should redirect to home page if movie has no director" do
+      movie_without_director = mock_model('Movie')
+      Movie.stub(:find).and_return movie_without_director
+      get :similar, :id => movie_without_director.id
+      response.should be_redirect
+    end
   
   end
 
